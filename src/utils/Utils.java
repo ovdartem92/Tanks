@@ -28,7 +28,7 @@ public class Utils {
                 lvlLines.add(str2int_arrays(line.split(" ")));
             }
             result = new Integer[lvlLines.size()][lvlLines.get(0).length];
-            for (int i = 0; i < lvlLines.size() ; i++) {
+            for (int i = 0; i < lvlLines.size(); i++) {
                 result[i] = lvlLines.get(i);
             }
         } catch (IOException e) {

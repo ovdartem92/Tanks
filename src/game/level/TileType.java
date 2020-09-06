@@ -4,14 +4,10 @@ public enum TileType {
 
     EMPTY(0), BRICK(1), METAL(2), WATER(3), GRASS(4), ICE(5);
 
-    private int n;
+    private final int n;
 
     TileType(int n) {
         this.n = n;
-    }
-
-    public int numeric() {
-        return n;
     }
 
     public static TileType fromNumeric(int n) {
@@ -29,5 +25,9 @@ public enum TileType {
             default:
                 return EMPTY;
         }
+    }
+
+    public int numeric() {
+        return n;
     }
 }

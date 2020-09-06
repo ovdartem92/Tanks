@@ -6,14 +6,14 @@ import java.util.Arrays;
 
 public class Input extends JComponent {
 
-    private boolean[] map;
+    private final boolean[] map;
 
     public Input() {
 
         map = new boolean[256];
         for (int i = 0; i < map.length; i++) {
             final int KEY_CODE = i;
-            getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(i, 0, false), i * 2 );
+            getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(i, 0, false), i * 2);
             getActionMap().put(i * 2, new AbstractAction() {
                 @Override
                 public void actionPerformed(ActionEvent e) {

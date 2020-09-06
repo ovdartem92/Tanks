@@ -7,8 +7,8 @@ import java.awt.image.BufferedImage;
 
 public class Sprite {
 
-    private SpriteSheet sheet;
-    private float scale;
+    private final SpriteSheet sheet;
+    private final float scale;
     private BufferedImage image;
 
     public Sprite(SpriteSheet sheet, float scale) {

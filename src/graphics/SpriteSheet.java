@@ -4,10 +4,10 @@ import java.awt.image.BufferedImage;
 
 public class SpriteSheet {
 
-    private BufferedImage sheet;
-    private int spriteCount;
-    private int scale;
-    private int spritesInWidth;
+    private final BufferedImage sheet;
+    private final int spriteCount;
+    private final int scale;
+    private final int spritesInWidth;
 
     public SpriteSheet(BufferedImage sheet, int spriteCount, int scale) {
         this.sheet = sheet;

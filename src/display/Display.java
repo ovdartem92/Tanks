@@ -40,7 +40,7 @@ public abstract class Display {
         buffer = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         bufferData = ((DataBufferInt) buffer.getRaster().getDataBuffer()).getData();
         bufferGraphics = buffer.getGraphics();
-        ((Graphics2D)bufferGraphics).setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        ((Graphics2D) bufferGraphics).setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         clearColor = _clearColor;
 
         content.createBufferStrategy(numBuffer);
@@ -60,15 +60,16 @@ public abstract class Display {
     }
 
     public static Graphics2D getGraphics() {
-         return (Graphics2D) bufferGraphics;
+        return (Graphics2D) bufferGraphics;
     }
 
     public static void destroy() {
-        if(!created)
+        if (!created)
             return;
 
         window.dispose();
     }
+
     public static void setTitle(String title) {
         window.setTitle(title);
     }

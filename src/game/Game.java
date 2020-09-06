@@ -2,14 +2,11 @@ package game;
 
 import display.Display;
 import game.level.Level;
-import graphics.Sprite;
-import graphics.SpriteSheet;
 import graphics.TextureAtlas;
 import io.Input;
 import utils.Time;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
 
 public class Game implements Runnable {
 
@@ -27,11 +24,11 @@ public class Game implements Runnable {
 
     private boolean running;
     private Thread gameThread;
-    private Graphics2D graphics;
-    private Input input;
-    private TextureAtlas atlas;
-    private Player player;
-    private Level lvl;
+    private final Graphics2D graphics;
+    private final Input input;
+    private final TextureAtlas atlas;
+    private final Player player;
+    private final Level lvl;
 
     public Game() {
         running = false;

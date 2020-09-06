@@ -25,7 +25,6 @@ public class Level {
 
     public Level(TextureAtlas atlas) {
 
-//        tileMap = new Integer[TILES_IN_WIDTH][TILES_IN_HEIGHT];
         tiles = new HashMap<TileType, Tile>();
         tiles.put(TileType.BRICK, new Tile(atlas.cut(32 * TILE_SCALE, 0 * TILE_SCALE, TILE_SCALE, TILE_SCALE),
                 TILE_IN_GAMW_SCALE, TileType.BRICK));
@@ -46,6 +45,7 @@ public class Level {
                 TILE_IN_GAMW_SCALE, TileType.EMPTY));
 
         tileMap = Utils.levelParser("res/level.lvl");
+
         grassCords = new ArrayList<Point>();
         for (int i = 0; i < tileMap.length; i++) {
             for (int j = 0; j < tileMap[i].length; j++) {

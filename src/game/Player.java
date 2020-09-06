@@ -15,34 +15,10 @@ public class Player extends Entity {
 
     public static final int SPRITE_SCALE = 16;
     public static final int SPRITES_PER_HEADING = 1;
-
-    private enum Heading {
-        NORTH(0 * SPRITE_SCALE, 0 * SPRITE_SCALE, 1 * SPRITE_SCALE, 1 * SPRITE_SCALE),
-        EAST(6 * SPRITE_SCALE, 0 * SPRITE_SCALE, 1 * SPRITE_SCALE, 1 * SPRITE_SCALE),
-        SOUTH(4 * SPRITE_SCALE, 0 * SPRITE_SCALE, 1 * SPRITE_SCALE, 1 * SPRITE_SCALE),
-        WEST(2 * SPRITE_SCALE, 0 * SPRITE_SCALE, 1 * SPRITE_SCALE, 1 * SPRITE_SCALE);
-
-        private int x, y, h, w;
-
-        Heading(int x, int y, int h, int w) {
-            this.x = x;
-            this.y = y;
-            this.w = w;
-            this.h = h;
-        }
-
-        protected BufferedImage texture(TextureAtlas atlas) {
-            return atlas.cut(x, y, w, h);
-        }
-
-        ;
-    }
-
     private Heading heading;
-    private Map<Heading, Sprite> spriteMap;
-    private float scale;
-    private float speed;
-
+    private final Map<Heading, Sprite> spriteMap;
+    private final float scale;
+    private final float speed;
     public Player(float x, float y, float scale, float speed, TextureAtlas atlas) {
         super(EntityType.Player, x, y);
 
@@ -94,5 +70,29 @@ public class Player extends Entity {
     @Override
     public void render(Graphics2D g) {
         spriteMap.get(heading).render(g, x, y);
+    }
+
+    private enum Heading {
+        NORTH(0 * SPRITE_SCALE, 0 * SPRITE_SCALE, 1 * SPRITE_SCALE, 1 * SPRITE_SCALE),
+        EAST(6 * SPRITE_SCALE, 0 * SPRITE_SCALE, 1 * SPRITE_SCALE, 1 * SPRITE_SCALE),
+        SOUTH(4 * SPRITE_SCALE, 0 * SPRITE_SCALE, 1 * SPRITE_SCALE, 1 * SPRITE_SCALE),
+        WEST(2 * SPRITE_SCALE, 0 * SPRITE_SCALE, 1 * SPRITE_SCALE, 1 * SPRITE_SCALE);
+
+        private final int x;
+        private final int y;
+        private final int h;
+        private final int w;
+
+        Heading(int x, int y, int h, int w) {
+            this.x = x;
+            this.y = y;
+            this.w = w;
+            this.h = h;
+        }
+
+        protected BufferedImage texture(TextureAtlas atlas) {
+            return atlas.cut(x, y, w, h);
+        }
+
     }
 }
