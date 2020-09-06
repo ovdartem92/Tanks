@@ -1,6 +1,9 @@
 package game;
 
 import display.Display;
+import graphics.Sprite;
+import graphics.SpriteSheet;
+import graphics.TextureAtlas;
 import io.Input;
 import utils.Time;
 
@@ -19,22 +22,24 @@ public class Game implements Runnable {
     public static final float UPDATE_INTERVAL = Time.SECOND / UPDATE_RATE;
     public static final long IDLE_TIME = 1;
 
+    public static final String ATLAS_FILE_NAME = "texture_atlas.png";
+
     private boolean running;
     private Thread gameThread;
     private Graphics2D graphics;
     private Input input;
+    private TextureAtlas atlas;
+    private Player player;
 
-    float x = 350;
-    float y = 250;
-    float delta = 0;
-    float radius = 50;
-    float speed = 3;
     public Game() {
         running = false;
         Display.create(WIDTH, HEIGHT, TITLE, CLEAR_COLOR, NUM_BUFFERS);
         graphics = Display.getGraphics();
         input = new Input();
         Display.addInputListener(input);
+        atlas = new TextureAtlas(ATLAS_FILE_NAME);
+        player = new Player(300, 300, 3, 3, atlas);
+
     }
 
     public synchronized void start() {
@@ -111,22 +116,13 @@ public class Game implements Runnable {
     }
 
     private void update() {
-        if(input.getKey(KeyEvent.VK_UP))
-            y -= speed;
-        if(input.getKey(KeyEvent.VK_DOWN))
-            y += speed;
-        if(input.getKey(KeyEvent.VK_LEFT))
-            x -= speed;
-        if(input.getKey(KeyEvent.VK_RIGHT))
-            x += speed;
-        delta += 0.02f;
+        player.update(input);
 
     }
 
     private void render() {
         Display.clear();
-        graphics.setColor(Color.WHITE);
-        graphics.fillOval((int) (x + Math.sin(delta) * 200), (int)y, (int)radius * 2, (int)radius * 2);
+        player.render(graphics);
         Display.swapBuffers();
 
     }
