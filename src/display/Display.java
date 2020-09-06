@@ -1,5 +1,7 @@
 package display;
 
+import io.Input;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -66,5 +68,12 @@ public abstract class Display {
             return;
 
         window.dispose();
+    }
+    public static void setTitle(String title) {
+        window.setTitle(title);
+    }
+
+    public static void addInputListener(Input inputListener) {
+        window.add(inputListener);
     }
 }
